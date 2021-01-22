@@ -85,6 +85,7 @@ def is_validated_english_sentence(user_input):
     """
     # ===Modify codes below=============
     # 조건에 따라 변환되어야 할 결과를 result 변수에 할당 또는 필요에 따라 자유로운 수정
+    result = None
     for ele in user_input:
         # 숫자 확인
         if ele in '0123456789':
@@ -303,19 +304,16 @@ def encoding_sentence(english_sentence):
     """
     # ===Modify codes below=============
     # 조건에 따라 변환되어야 할 결과를 result 변수에 할당 또는 필요에 따라 자유로운 수정
-    tmp = get_cleaned_english_sentence(english_sentence)
-    result = ''
-    #문자열 looping
-    for ele in tmp:
-        #공백인 경우
-        if ele == " ":
-            #concat
-            result += ele
-        #공백이 아닌 경우
-        else:
-            #encoding 후 접합
-            result += encoding_character(ele.upper()) + " "
-
+    #split으로 분리된 단어들을 list로 저장
+    tmp = get_cleaned_english_sentence(english_sentence).split()
+    tmp_list = []
+    # 단어 기준으로 looping
+    for word in tmp:
+        tmp_code = ''
+        for ele in word:
+            tmp_code += encoding_character(ele.upper()) + ' '
+        tmp_list.append(tmp_code.strip())
+    result = ' '.join(tmp_list)
     return result.strip()
     # ==================================
 
