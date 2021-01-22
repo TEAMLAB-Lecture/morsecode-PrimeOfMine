@@ -310,10 +310,11 @@ def encoding_sentence(english_sentence):
     # 단어 기준으로 looping
     for word in tmp:
         tmp_code = ''
+        #글자 기준으로 looping
         for ele in word:
             tmp_code += encoding_character(ele.upper()) + ' '
         tmp_list.append(tmp_code.strip())
-    result = ' '.join(tmp_list)
+    result = '  '.join(tmp_list)
     return result.strip()
     # ==================================
 
