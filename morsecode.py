@@ -266,13 +266,18 @@ def decoding_sentence(morse_sentence):
     # ===Modify codes below=============
     # 조건에 따라 변환되어야 할 결과를 result 변수에 할당 또는 필요에 따라 자유로운 수정
     #split으로 띄어쓰기 기준으로 split, tmp는 항상 list
-    tmp = morse_sentence.split()
-    #tmp를 기준으로 loop
-    for i, ele in enumerate(tmp):
-        #문자열 치환
-        tmp[i] = decoding_character(ele)
+    tmp = morse_sentence.split("  ")
     
-    result = " ".join(tmp)
+    list_result = []
+    #tmp를 기준으로 loop
+    for word in tmp:
+        tmp_word = ""
+        #단어 기준으로 불러옴
+        tmp_list = word.split()
+        for ele in tmp_list:
+            tmp_word += decoding_character(ele)
+        list_result.append(tmp_word)
+    result = " ".join(list_result)
 
     return result
     # ==================================
